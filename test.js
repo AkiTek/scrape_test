@@ -6,7 +6,7 @@ const fs = require('fs')
 const body = () =>  {"SECURE_FORM_TOKEN=&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3AtopPagingLinks%3ApageNumbers%3A4%3ApageNumberLink=x&hdnBulkReturnUrl=https%3A%2F%2Fb2b-ch.infomart.co.jp%2Fcompany%2Fsearch%2Flist.page&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A0%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=37110&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A1%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=17640239&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A2%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=17640193&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A3%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=37351&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A4%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=16591954&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A5%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=35425&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A6%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=35914&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A7%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=21139&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A8%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=12559992&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A9%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=35672&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A10%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=6651986&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A11%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=11719366&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A12%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=17638870&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A13%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=12053001&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A14%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=1245312&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A15%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=17638555&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A16%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=3201&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A17%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=11935814&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A18%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=35086&wmcExistsKeywordContainer%3AwmcExistsItemContainer%3Apaging%3Apaging_body%3AsearchList%3A19%3AcompanyItemPanel%3AwmcChkBulkRegistration%3AhdnCompanyLabelId=37713&leftColumnPanel%3AtfKeyWord=&leftColumnPanel%3AindustryPanel%3AwmcIndustry%3AhdnIndustryCdInfo=&leftColumnPanel%3AareaPanel%3AwmcArea%3AhdnAreaCdInfo=&leftColumnPanel%3AlistedMarketPanel%3AlistedMarketDataRow%3A0%3AhdnListedMarket=0&leftColumnPanel%3AlistedMarketPanel%3AlistedMarketDataRow%3A1%3AhdnListedMarket=1&leftColumnPanel%3AlistedMarketPanel%3AlistedMarketDataRow%3A2%3AhdnListedMarket=2&leftColumnPanel%3AlistedMarketPanel%3AlistedMarketDataRow%3A3%3AhdnListedMarket=3&leftColumnPanel%3AlistedMarketPanel%3AlistedMarketDataRow%3A4%3AhdnListedMarket=4&leftColumnPanel%3AlistedMarketPanel%3AlistedMarketDataRow%3A5%3AhdnListedMarket=5&leftColumnPanel%3AlistedMarketPanel%3AlistedMarketDataRow%3A6%3AhdnListedMarket=9"}
 
 (async () => {
-    const browser = await puppeteer.launch({headless: false});
+    const browser = await puppeteer.launch({args: ['--disable-features=site-per-process'],headless: false});
     const page = await browser.newPage();
 
     await page.setViewport({ width: 1080, height: 960 })  
@@ -91,8 +91,30 @@ const body = () =>  {"SECURE_FORM_TOKEN=&wmcExistsKeywordContainer%3AwmcExistsIt
     ]);
 
     await page.setCookie(...now_cookies)
+    
+////////////////////////////////////////////////////////////////
+    await page.evaluate(() => {
+      const modal = document.getElementById('lnkMdlArea');
+      modal.click();
+    })
+    await new Promise(resolve => setTimeout(resolve, 5000))
+    const frame = await page.frames().find((f) => f.name() === '__modalName2');
+    const checkbox = await frame.$('#check_0313')
+    checkbox.click();
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    const retire = await frame.$('#lnkSelected')
+    retire.click()
 
-    while(i< 3){
+    await new Promise(resolve => setTimeout(resolve, 5000))
+
+    await page.evaluate(() => {
+      const a = document.getElementById('lnkSearch');
+      a.click()
+    })
+    await page.waitForNavigation()
+///////////////////////////////////////////////////////////////
+
+    while(false){
       let corp_numbers = []
       for (let i=0;i<20;i++){
         corp_numbers.push(await page.$eval(`input[id=hdnCompanyLabelId${i}]`,el => el.value))
@@ -122,10 +144,10 @@ const body = () =>  {"SECURE_FORM_TOKEN=&wmcExistsKeywordContainer%3AwmcExistsIt
       await page.waitForNavigation()
       await new Promise(resolve => setTimeout(resolve, 3000))
     }
-    let corp_numbers = []
-    for (let i=0;i<20;i++){
-      corp_numbers.push(await page.$eval(`input[id=hdnCompanyLabelId${i}]`,el => el.value))
-    }
+    // let corp_numbers = []
+    // for (let i=0;i<20;i++){
+    //   corp_numbers.push(await page.$eval(`input[id=hdnCompanyLabelId${i}]`,el => el.value))
+    // }
     // console.log(corp_numbers)
     const beforeCookies = await page.cookies();
     // console.log(afterCookies)
